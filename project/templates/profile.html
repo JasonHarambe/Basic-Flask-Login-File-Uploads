@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="title">
+  Welcome, {{ name }}!
+</h1>
+
+<div class="column is-4 is-offset-4">
+  <h3>Verify Yourself</h3>
+  <div class="box">
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="notification is-danger">
+                {{ messages[0] }}
+            </div>
+        {% endif %}
+      {% endwith %}
+      <form action = "/upload" method = "POST" 
+         enctype = "multipart/form-data">
+         <input type = "file" name = "file" class="input"/>
+         <input type = "submit"/>
+      </form>  
+  </div>
+</div>
+
+{% endblock %}
